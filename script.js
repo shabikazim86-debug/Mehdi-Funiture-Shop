@@ -36,3 +36,6 @@ for (const item of scroolContainer) {
         item.scroolLeft += evt.deltaY;
     })
 }
+img.addEventListener("click", () => {
+  window.location.href = `category.html?type=${item.category}`;
+});

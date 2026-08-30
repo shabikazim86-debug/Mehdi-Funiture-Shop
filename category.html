@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Category Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    h2#category-title {
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 10px;
+    }
+
+    .products img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    .products img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox overlay */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    /* Close button */
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2 id="category-title"></h2>
+  <div class="products" id="products"></div>
+
+  <!-- Lightbox container -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    // 1. Read the category from the URL
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("type"); // e.g. "beds"
+
+    // 2. Show category title
+    document.getElementById("category-title").textContent =
+      `Showing products for: ${category}`;
+
+    // 3. Define product images by category
+    const productData = {
+      beds: [
+         "1788022795597 (1).png",
+        "1788023356984 (1).png",
+        "1788024395489 (1).png",
+        "1788024972188 (1).png",
+        "1788025084086 (1).png",
+        "1788025199668 (1).png",
+        "1788026096439.png",
+        "1788027325650.png",
+        "1788028925547.png",
+        "1788029326260.png",
+        "1788029746979.png",
+        "1788029908713.png",
+        "1788030544781.png",
+        "1788030585710.png",
+        "1788030734251.png",
+        "1788030978640.png",
+        "1788031134523.png",
+        "1788068964074.png",
+        "1788069096703.png",
+        "1788069206041.png",
+        "1788069414175.png",
+        "1788069531632.png",
+        "1788069654000.png",
+        "1788069889787.png",
+        "1788069897074.png",
+        "1788069908881.png",
+        "1788069970701.png",
+        "1788070024313.png",
+        "1788070098542.png",
+        "1788070154847.png",
+        "1788070436401.png",
+        "1788078424103.png",
+        "1788078519622.png",
+        "1788078877265.png",
+        "1788078924143.png",
+        "bed1.png",
+        "image_1ab8d079.png",
+        "image_2c2cbef0.png",
+        "image_2c1797b6.png",
+        "image_2c1797b6-1.png",
+        "image_2cd73c34.png",
+        "image_2cd73c34-1.png",
+        "image_4f7b2f2b.png",
+        "image_6dcbc931.png",
+        "image_8cc354cf (1).png",
+        "image_98172e19.png",
+        "image_463512de.png",
+        "image_c1a74dc7.png",
+        "image_dd1597d5.png",
+        "1788022333424 (1).png",
+        "1788022608166 (1).png",
+        "image_f4d8b191.png",
+        "image_fc813323.png"
+      ],
+      sofas: ["sofa1.png", "sofa2.png"],
+      tables: ["table1.png", "table2.png", "table3.png"]
+    };
+
+    const folderPath = "./Funiture.Assets/Bed Album/";
+    const productContainer = document.getElementById("products");
+
+    if (productData[category]) {
+      productData[category].forEach(file => {
+        const img = document.createElement("img");
+        img.src = folderPath + file;
+        img.alt = file;
+
+        // 👇 Add click event to open lightbox
+        img.addEventListener("click", () => {
+          document.getElementById("lightbox-img").src = img.src;
+          document.getElementById("lightbox").style.display = "flex";
+        });
+
+        productContainer.appendChild(img);
+      });
+    } else {
+      productContainer.textContent = "No products found for this category.";
+    }
+
+    // Close lightbox
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+
+    // Close with ESC key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
