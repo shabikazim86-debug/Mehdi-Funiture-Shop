@@ -35,7 +35,4 @@ for (const item of scroolContainer) {
         evt.preventDefault();
         item.scroolLeft += evt.deltaY;
     })
-}
-img.addEventListener("click", () => {
-  window.location.href = `category.html?type=${item.category}`;
-});
+ }

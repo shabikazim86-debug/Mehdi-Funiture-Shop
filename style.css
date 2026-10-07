@@ -169,8 +169,8 @@ nav{
 
 }
 .product-slider .products img{
-    max-width: 200px;
     max-height: 200px;
+    max-width: 200px;
 }
 .product-slider .products::-webkit-scrollbar{
     display: none;
@@ -207,12 +207,12 @@ nav{
     display: flex;
     flex-direction: column;
     justify-content: end;
-    min-width: 210px;
+    min-width: auto;
     background: #fbfbfb;
 }
 .products-card img{
-    width: 110px;
-    margin: 0 50px;
+    width: auto;
+    height: 250px;
 }
 .product-offer p{
     background: #be0b3b;
@@ -244,4 +244,79 @@ footer{
     color: #fff;
     background: #131921;
     padding: 20px 60px;
+}
+
+.img{
+    max-height: 250px;
+    width: auto;
+}
+
+
+
+
+/*---------------------media query----------------------*/
+
+@media only screen and (max-width: 900px){
+    nav{
+        flex-wrap: wrap;
+    }
+    .nav-search{
+        order: 7;
+        margin: 15px 0 5px;
+        min-width: 300px;
+    }
+    .box-col{
+        max-width: 48%;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .nav-country{
+        display: none;
+    }
+    .nav-language{
+        display: none;
+    }
+    .nav-text{
+        display: none;
+    }
+    .nav-search{
+        min-width: 100%;
+    }
+    .nav-bottom{
+        font-size: 13px;
+        gap: 10px;
+        overflow-x: scroll;
+    }
+    .nav-bottom::-webkit-scrollbar{
+        display: none;
+    }
+    .nav-bottom p{
+        text-wrap: nowrap;
+    }
+    .mobie-user-icon{
+        display: flex !important;
+        flex: 1;
+        justify-content: flex-end;
+    }
+    .mobie-user-icon img{
+        width: 25px;
+    }
+    .nav-cart h4{
+        display: none
+    }
+    .nav-cart img{
+        width: 25px;
+    }
+    .header-slider a{
+        top: 24%;
+        padding: 2vh 1vw;
+        font-size: 15px;
+    }
+   
+    footer{
+        justify-content: center;
+        flex-direction: column;
+        font-size: 15px;
+    }
 }
