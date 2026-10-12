@@ -149,7 +149,9 @@ nav{
     font-size: 13px;
     color: #009999;
     font-weight: 500;
-
+}
+.box-col a img{
+    max-width: 100%;
 }
 .header-box{
     margin-top: -40vw;
